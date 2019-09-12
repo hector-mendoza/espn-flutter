@@ -37,9 +37,15 @@ class MyStatelessWidget extends StatelessWidget {
         // horizontal, this produces 2 rows.
         crossAxisCount: 3,
         // Generate 100 widgets that display their index in the List.
-        children: List.generate(100, (index) {
+        children: List.generate(15, (index) {
           return Center(
-            child: Image.asset('assets/user.png'),
+            child:  Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1.0)
+              ),
+              padding: const  EdgeInsets.all(30.0),
+              child: Image.asset('assets/user.png'),
+            ) 
           );
         }),
       ),
