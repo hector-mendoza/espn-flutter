@@ -9,7 +9,7 @@ void main() => runApp(MyApp());
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'ESPN Flutter';
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +33,32 @@ class MyStatelessWidget extends StatelessWidget {
         backgroundColor: Colors.red,
       ),
       body: GridView.count(
+        padding: EdgeInsets.only(
+          top: 5.0,
+          left: 25,
+          right: 25,
+        ),
         // Create a grid with 2 columns. If you change the scrollDirection to
         // horizontal, this produces 2 rows.
         crossAxisCount: 3,
         // Generate 100 widgets that display their index in the List.
         children: List.generate(15, (index) {
           return Center(
-            child:  Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 1.0)
-              ),
-              padding: const  EdgeInsets.all(30.0),
-              child: Image.asset('assets/user.png'),
-            ) 
+              child: Container(
+                  margin: EdgeInsets.only(left: 4, right: 4, bottom: 5),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.all(const Radius.circular(20.0)),
+                      border: Border.all(color: Colors.grey, width: 1)),
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset('assets/premier-icon.png'),
+                      Text('Premier League',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 14, color: Colors.black)),
+                    ],
+                  )
+              )
           );
         }),
       ),
@@ -55,8 +68,10 @@ class MyStatelessWidget extends StatelessWidget {
           height: 70,
           padding: EdgeInsets.all(20),
           alignment: Alignment.centerRight,
-          child: Text('Siguiente',
-              style: TextStyle(fontSize: 16, color: Colors.white)),
+          child: Text(
+            'Siguiente',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
         ),
       ),
     );
