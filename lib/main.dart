@@ -22,46 +22,53 @@ class MyApp extends StatelessWidget {
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
+  final List _leagues = [
+    'premier-icon.png'
+  ];
+  
+
   MyStatelessWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Widget espn_grid = GridView.count(
+      padding: EdgeInsets.only(
+        top: 5.0,
+        left: 25,
+        right: 25,
+      ),
+      // Create a grid with 2 columns. If you change the scrollDirection to
+      // horizontal, this produces 2 rows.
+      crossAxisCount: 3,
+      // Generate 100 widgets that display their index in the List.
+      children: List.generate(30, (index) {
+        return Center(
+            child: Container(
+          padding: EdgeInsets.only(
+            top: 8.0,
+          ),
+          margin: EdgeInsets.only(left: 4, right: 4, bottom: 5),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              border: Border.all(color: Colors.grey, width: 1)),
+          child: Column(
+            children: <Widget>[
+              Image.asset('assets/premier-icon.png'),
+              Text('Premier League',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14, color: Colors.black)),
+            ],
+          ),
+        ));
+      }),
+    );
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text('¿Más Favoritos?'),
         backgroundColor: Colors.red,
       ),
-      body: GridView.count(
-        padding: EdgeInsets.only(
-          top: 5.0,
-          left: 25,
-          right: 25,
-        ),
-        // Create a grid with 2 columns. If you change the scrollDirection to
-        // horizontal, this produces 2 rows.
-        crossAxisCount: 3,
-        // Generate 100 widgets that display their index in the List.
-        children: List.generate(15, (index) {
-          return Center(
-              child: Container(
-                  margin: EdgeInsets.only(left: 4, right: 4, bottom: 5),
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.all(const Radius.circular(20.0)),
-                      border: Border.all(color: Colors.grey, width: 1)),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset('assets/premier-icon.png'),
-                      Text('Premier League',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.black)),
-                    ],
-                  )
-              )
-          );
-        }),
-      ),
+      body: espn_grid,
       bottomNavigationBar: BottomAppBar(
         color: Colors.red,
         child: Container(
